@@ -39,7 +39,7 @@ Sahih is a simple web application that generates random hadiths, similar to a qu
 4. Start the development server:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 The app will run locally on `http://localhost:3000`.
