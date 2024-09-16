@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useHadith } from "../queries/useHadith";
 import { usePhoto } from "../queries/usePhoto";
 import books from "../utilities/books";
-import Select from "../ui/Select";
 import Spinner from "../ui/Spinner";
 import Error from "../ui/Error";
 import Footer from "../ui/footer";
 import CopyCapture from "../ui/CopyCapture";
+import Content from "../ui/Content";
 export default function Hadith() {
   const [animationHadith, setAnimationHadith] = useState("");
   const [animationPhoto, setAnimationPhoto] = useState("");
@@ -38,29 +38,27 @@ export default function Hadith() {
   const backgroundImage = photo?.data.urls.regular;
   const hadith = hadiths?.data.hadiths.data[0].hadithArabic;
 
-  useEffect(() => {
-    if (hadith) {
-      setAnimationHadith("fade-in-up"); // Trigger animation
-      setAnimationPhoto("fade-in"); // Trigger animation
-      const timer = setTimeout(() => {
-        setAnimationHadith(""), setAnimationPhoto("");
-      }, 1000); // Remove animation class after 1s
-      return () => clearTimeout(timer);
-    }
-  }, [hadith]);
-
   if (isHadithLoading || isPhotoLoading) return <Spinner />;
-  if (isHadithError || isPhotoError)
-    return <Error error={hadithError || photoError} />;
+  if (isHadithError || isPhotoError) return <Error error={hadithError || photoError} />;
 
   const handleNewHadith = () => {
+    setAnimationHadith("fade-in-up");
+    setAnimationPhoto("fade-in");
+
+    // Clear the animations after 1 second to reset
+    setTimeout(() => {
+      setAnimationHadith("");
+      setAnimationPhoto("");
+    }, 1000);
+    
     refetchHadith();
+
     refetchPhoto();
   };
 
   return (
     <div
-      className={`relative h-screen text-white p-24 bg-cover bg-center bg-slate-600 flex items-center justify-center flex-col ${animationPhoto}`}
+      className={`relative h-screen text-white px-10 py-20 sm:px-24 bg-cover bg-center bg-slate-600 grid items-center ${animationPhoto}`}
       style={{
         backgroundImage: `url(${backgroundImage})`,
       }}
@@ -71,12 +69,13 @@ export default function Hadith() {
       {/* copy and captuer buttons*/}
       <CopyCapture hadith={hadith} captuerRef={captuerRef} />
       {/* Select book*/}
-      <Select options={books} value={book} setValue={setBook} />
-      <p
-        className={`relative leading-loose text-5xl w-full  overflow-y-auto max-h-96 ${animationHadith}`}
-      >
-        {hadith}
-      </p>
+      <Content
+        book={book}
+        setBook={setBook}
+        books={books}
+        animationHadith={animationHadith}
+        hadith={hadith}
+      />
       {/* Hadith info and next button */}
       <Footer
         handleNewHadith={handleNewHadith}

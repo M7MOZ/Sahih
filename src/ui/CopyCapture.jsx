@@ -4,7 +4,7 @@ import handleCaptureClick from "../utilities/ScreenShot";
 import handleCopyClick from "../utilities/copyText";
 function CopyCapture({ hadith, captuerRef }) {
   return (
-    <div className=" relative gap-4 top-0 flex ">
+    <div className=" relative gap-4 flex mx-auto">
         <button className="text-3xl" onClick={() => handleCopyClick(hadith)}>
           <IoClipboardOutline />
         </button>

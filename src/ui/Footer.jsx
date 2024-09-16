@@ -3,10 +3,11 @@ import { FaArrowRight } from "../icons/icons";
 import getLabelByValue from "../utilities/getLabelByValue";
 function Footer({ bookSlug, chapter, handleNewHadith }) {
   return (
-    <div className="relative w-full text-4xl flex items-center justify-between mt-4">
-        <p>
-          ({getLabelByValue(bookSlug)}, {chapter})
-        </p>
+    <div className="relative w-full text-3xl sm:lg:text-5xl flex items-center justify-between mt-4">
+        <div>
+          <p>{getLabelByValue(bookSlug)}</p>
+          <p>{chapter}</p> 
+        </div>
         <button
           onClick={handleNewHadith}
           className="relative flex items-center"
