@@ -1,6 +1,6 @@
 # Sahih - Random Hadith Generator
 
-Sahih is a simple web application that generates random hadiths, similar to a quote generator but focused on authentic sayings of Prophet Muhammad (PBUH). This app is built with React and utilizes React Query for fetching the hadith data.
+Sahih is a simple web application that generates random hadiths, similar to a quote generator but focused on authentic sayings of Prophet Muhammad (PBUH). This app is built with React and utilizes React Query to fetch the hadith data.
 
 ## Features
 
@@ -44,6 +44,6 @@ Sahih is a simple web application that generates random hadiths, similar to a qu
 
 The app will run locally on `http://localhost:3000`.
 
-## Specila Thanks
+## Special Thanks
 - Special thanks to [Hadith API](https://www.hadithapi.com/)
  for providing the free API and access key used in this project.
