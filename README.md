@@ -42,7 +42,7 @@ Sahih is a simple web application that generates random hadiths, similar to a qu
     npm run dev
     ```
 
-Demo: `https://66e82013985c3f29b6724827--gleeful-semifreddo-c6fe42.netlify.app/`.
+[Demo](https://66e82013985c3f29b6724827--gleeful-semifreddo-c6fe42.netlify.app/).
 
 ## Special Thanks
 - Special thanks to [Hadith API](https://www.hadithapi.com/)
